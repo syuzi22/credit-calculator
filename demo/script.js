@@ -1,5 +1,6 @@
 "use strict";
 
+try{
 let node = document.querySelector(".credit-calc");
 
 let options = {
@@ -21,6 +22,9 @@ if (document.readyState === 'loading') {  // Загрузка ещё не зак
     document.addEventListener('DOMContentLoaded', runCalc);
   } else {  // `DOMContentLoaded` Уже сработал
   runCalc();
+}
+}catch(error){
+    alert(error);
 }
 
 

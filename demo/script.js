@@ -1,3 +1,4 @@
+alert("script.js - 1");
 window.onerror = function (msg, url, lineNo, columnNo, error) {
     alert("Fatal error: " + msg + " at line " + lineNo + ": " + error);
 
@@ -6,7 +7,9 @@ window.onerror = function (msg, url, lineNo, columnNo, error) {
 
 let debugNode = null;
 
+alert("script.js - 2");
 try {
+    alert("script.js - 3");
     class CreditCalc {
         /**
          * @type {Node}
@@ -215,14 +218,17 @@ try {
         }
     }
 
+    alert("script.js - 4");
     const debugLog = (message) => {
         if (debugNode) {
             debugNode.innerHTML += message + "\n\n";
         }
     };
 
+    alert("script.js - 5");
     // https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat
     document.addEventListener("DOMContentLoaded", () => {
+        alert("script.js - DOMContentLoaded");
         debugNode = document.querySelector('.js-debug-console');
         let node = document.querySelector(".credit-calc");
 
@@ -235,6 +241,7 @@ try {
             // formatMoney: (number) => number + ' руб'
             // formatMoney: (number) => new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' }).format(number)
         };
+        alert("script.js - DOMContentLoaded -- typeof CreditCalc = " + (typeof CreditCalc));
         debugLog("creating calculator with options: " + JSON.stringify(options));
         debugLog("typeof CreditCalc = " + (typeof CreditCalc));
         let myCalc = new CreditCalc(node, options);

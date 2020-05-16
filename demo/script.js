@@ -1,18 +1,5 @@
 "use strict";
 
-try {
-
-    alert(navigator.userAgent)
-
-    class Test {
-        constructor(){
-            this.name = 'Susanna';
-        }
-    }
-
-    let testUser = new Test();
-    alert(testUser.name)
-
     let node = document.querySelector(".credit-calc");
 
     let options = {
@@ -26,12 +13,8 @@ try {
     };
 
     function runCalc() {
-
-        alert('runCalc-1')
         let myCalc = new CreditCalc(node, options);
-        alert('runCalc-2')
         myCalc.makeNodes();
-        alert('runCalc-3')
     }
 
     if (document.readyState === "loading") {
@@ -41,8 +24,8 @@ try {
         // `DOMContentLoaded` Уже сработал
         runCalc();
     }
-} catch (error) {
-    alert(error);
-}
+
+
+
 
 // https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat

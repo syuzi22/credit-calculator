@@ -41,6 +41,65 @@ class CreditCalc {
         this.rate = parseInt(options.rate || 14);
         this.years = options.years || ["1 год", "2 года", "3 года"];
         this.formatMoney = options.formatMoney;
+        
+            this.rateDiv = this.node.querySelector(".credit-calc__rate");
+            this.paymentDiv = this.node.querySelector(".credit-calc__payment");
+            this.rangeDiv = this.node.querySelector(".credit-calc__range");
+            this.valueOfRange = this.node.querySelector(".credit-calc__value-of-range");
+    
+            if (!this.node || this.node instanceof Node === false) {
+                throw new Error("node must be an instance of Node");
+            }
+    
+            if (!this.rangeDiv) {
+                this.rangeDiv = document.createElement("input");
+                this.rangeDiv.type = "range";
+                this.node.insertAdjacentElement("afterbegin", this.rangeDiv);
+            }
+    
+            this.rangeDiv.min = options.rangeMin || this.rangeDiv.min || 1e5;
+            this.rangeDiv.max = options.rangeMax || this.rangeDiv.max || 1e6;
+            this.rangeDiv.step = options.rangeStep || this.rangeDiv.step || 1e5;
+            this.rangeDiv.classList.add("credit-calc__range");
+            if (this.rateDiv) {
+                this.rateDiv.textContent = this.rate + " %";
+            }
+    
+            if (this.valueOfRange) {
+                this.valueOfRange.textContent = this.formatMoneyFunc(this.rangeDiv.value);
+            }
+    
+            if (!this.timeDiv) {
+                this.timeDiv = document.createElement("div");
+                this.timeDiv.classList.add("credit-calc__time");
+                this.node.append(this.timeDiv);
+            }
+    
+            this.timeDiv = this.node.querySelector(".credit-calc__time");
+    
+            this.buttons = this.makeButtons();
+    
+            this.months =
+                parseInt(
+                    this.node.querySelector(".credit-calc__button_selected")
+                        .textContent
+                ) * 12;
+    
+            if (this.paymentDiv) {
+                this.paymentDiv.textContent = this.calcAnnuityPayment(
+                    this.rangeDiv.value,
+                    this.months,
+                    this.rate
+                );
+            }
+    
+            this.rangeDiv.addEventListener(
+                "input",
+                this.rangeDivInputHandler.bind(this)
+            );
+    
+            this.node.addEventListener("click", this.nodeClickHandler.bind(this));
+        
     }
 
     makeButtons() {
@@ -122,63 +181,67 @@ class CreditCalc {
         }
     }
 
-    makeNodes(){
-        this.rateDiv = this.node.querySelector(".credit-calc__rate");
-        this.paymentDiv = this.node.querySelector(".credit-calc__payment");
-        this.rangeDiv = this.node.querySelector(".credit-calc__range");
-        this.valueOfRange = this.node.querySelector(".credit-calc__value-of-range");
-
-        if (!this.node || this.node instanceof Node === false) {
-            throw new Error("node must be an instance of Node");
-        }
-
-        if (!this.rangeDiv) {
-            this.rangeDiv = document.createElement("input");
-            this.rangeDiv.type = "range";
-            this.node.insertAdjacentElement("afterbegin", this.rangeDiv);
-        }
-
-        this.rangeDiv.min = options.rangeMin || this.rangeDiv.min || 1e5;
-        this.rangeDiv.max = options.rangeMax || this.rangeDiv.max || 1e6;
-        this.rangeDiv.step = options.rangeStep || this.rangeDiv.step || 1e5;
-        this.rangeDiv.classList.add("credit-calc__range");
-        if (this.rateDiv) {
-            this.rateDiv.textContent = this.rate + " %";
-        }
-
-        if (this.valueOfRange) {
-            this.valueOfRange.textContent = this.formatMoneyFunc(this.rangeDiv.value);
-        }
-
-        if (!this.timeDiv) {
-            this.timeDiv = document.createElement("div");
-            this.timeDiv.classList.add("credit-calc__time");
-            this.node.append(this.timeDiv);
-        }
-
-        this.timeDiv = this.node.querySelector(".credit-calc__time");
-
-        this.buttons = this.makeButtons();
-
-        this.months =
-            parseInt(
-                this.node.querySelector(".credit-calc__button_selected")
-                    .textContent
-            ) * 12;
-
-        if (this.paymentDiv) {
-            this.paymentDiv.textContent = this.calcAnnuityPayment(
-                this.rangeDiv.value,
-                this.months,
-                this.rate
-            );
-        }
-
-        this.rangeDiv.addEventListener(
-            "input",
-            this.rangeDivInputHandler.bind(this)
-        );
-
-        this.node.addEventListener("click", this.nodeClickHandler.bind(this));
-    }
 }
+
+
+
+
+// makeNodes(){
+//     this.rateDiv = this.node.querySelector(".credit-calc__rate");
+//     this.paymentDiv = this.node.querySelector(".credit-calc__payment");
+//     this.rangeDiv = this.node.querySelector(".credit-calc__range");
+//     this.valueOfRange = this.node.querySelector(".credit-calc__value-of-range");
+
+//     if (!this.node || this.node instanceof Node === false) {
+//         throw new Error("node must be an instance of Node");
+//     }
+
+//     if (!this.rangeDiv) {
+//         this.rangeDiv = document.createElement("input");
+//         this.rangeDiv.type = "range";
+//         this.node.insertAdjacentElement("afterbegin", this.rangeDiv);
+//     }
+
+//     this.rangeDiv.min = options.rangeMin || this.rangeDiv.min || 1e5;
+//     this.rangeDiv.max = options.rangeMax || this.rangeDiv.max || 1e6;
+//     this.rangeDiv.step = options.rangeStep || this.rangeDiv.step || 1e5;
+//     this.rangeDiv.classList.add("credit-calc__range");
+//     if (this.rateDiv) {
+//         this.rateDiv.textContent = this.rate + " %";
+//     }
+
+//     if (this.valueOfRange) {
+//         this.valueOfRange.textContent = this.formatMoneyFunc(this.rangeDiv.value);
+//     }
+
+//     if (!this.timeDiv) {
+//         this.timeDiv = document.createElement("div");
+//         this.timeDiv.classList.add("credit-calc__time");
+//         this.node.append(this.timeDiv);
+//     }
+
+//     this.timeDiv = this.node.querySelector(".credit-calc__time");
+
+//     this.buttons = this.makeButtons();
+
+//     this.months =
+//         parseInt(
+//             this.node.querySelector(".credit-calc__button_selected")
+//                 .textContent
+//         ) * 12;
+
+//     if (this.paymentDiv) {
+//         this.paymentDiv.textContent = this.calcAnnuityPayment(
+//             this.rangeDiv.value,
+//             this.months,
+//             this.rate
+//         );
+//     }
+
+//     this.rangeDiv.addEventListener(
+//         "input",
+//         this.rangeDivInputHandler.bind(this)
+//     );
+
+//     this.node.addEventListener("click", this.nodeClickHandler.bind(this));
+// }

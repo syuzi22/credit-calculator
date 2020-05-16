@@ -15,15 +15,17 @@
     function runCalc() {
         alert(1);
         let myCalc = new CreditCalc(node, options);
-        alert(2);
+        alert(3);
         myCalc.makeNodes();
     }
 
     if (document.readyState === "loading") {
         // Загрузка ещё не закончилась
+        alert(4);
         document.addEventListener("DOMContentLoaded", runCalc);
     } else {
         // `DOMContentLoaded` Уже сработал
+        alert(2);
         runCalc();
     }
 

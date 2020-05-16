@@ -1,5 +1,4 @@
 class CreditCalc {
-    
     /**
      * @type {Node}
      */
@@ -32,19 +31,29 @@ class CreditCalc {
     formatMoney;
 
     /**
+     * @type {?node}
+     */
+    debugNode;
+
+    /**
      * @param {Node} node
      * @param {object} options
      * @throws Error
      */
     constructor(node, options) {
+        this.debugNode = this.debugNode || document.querySelector('.js-debug-console');
+        this.debugLog("CreditCalc constructor()");
+
         this.node = node || options.node;
         this.rate = parseInt(options.rate || 14);
         this.years = options.years || ["1 год", "2 года", "3 года"];
         this.formatMoney = options.formatMoney;
         this.options = options;
+        this.debugLog("CreditCalc constructor() end");
     }
 
     makeButtons() {
+        this.debugLog("CreditCalc makeButtons()");
         this.timeDiv.innerHTML = "";
         for (let i = 0; i < this.years.length; i++) {
             let button = document.createElement("button");
@@ -55,14 +64,17 @@ class CreditCalc {
         this.node
             .querySelector("button")
             .classList.add("credit-calc__button_selected");
+        this.debugLog("CreditCalc makeButtons()");
     }
 
     calcAnnuityPayment(creditSum, creditTimeInMonths, creditRate) {
+        this.debugLog("CreditCalc calcAnnuityPayment()");
         let monthCreditRate = creditRate / 12 / 100; //Месячная процентная ставка
         let numberOfPayments = creditTimeInMonths; //Количество платежей
         let pow = Math.pow(1 + monthCreditRate, numberOfPayments); //параметр для формулы расчета аннуитета
         let annuityСoefficient = (monthCreditRate * pow) / (pow - 1); //Коэффициент аннуитета
         let annuityPayment = (creditSum * annuityСoefficient).toFixed(2); //Аннуитетный платеж
+        this.debugLog("CreditCalc calcAnnuityPayment() returning " + annuityPayment);
         return this.formatMoneyFunc(annuityPayment);
     }
 
@@ -70,7 +82,7 @@ class CreditCalc {
         if (!this.valueOfRange) {
             return;
         }
-        
+
         this.valueOfRange.textContent = this.formatMoneyFunc(this.rangeDiv.value);
 
         this.months =
@@ -123,7 +135,9 @@ class CreditCalc {
         }
     }
 
-    makeNodes(){
+    makeNodes() {
+        this.debugLog("CreditCalc makeNodes()");
+        this.debugNode = this.debugNode || document.querySelector('.js-debug-console');
         this.rateDiv = this.node.querySelector(".credit-calc__rate");
         this.paymentDiv = this.node.querySelector(".credit-calc__payment");
         this.rangeDiv = this.node.querySelector(".credit-calc__range");
@@ -181,5 +195,13 @@ class CreditCalc {
         );
 
         this.node.addEventListener("click", this.nodeClickHandler.bind(this));
+        this.debugLog("CreditCalc makeNodes() - END");
+    }
+
+    debugLog(message) {
+        if (!this.debugNode) {
+            return;
+        }
+        this.debugNode.innerHTML += message + "\n\n";
     }
 }

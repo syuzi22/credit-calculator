@@ -6,9 +6,18 @@ window.onerror = function (msg, url, lineNo, columnNo, error) {
     return false;
 };
 
+let debugNode = null;
+
 try {
+    const debugLog = (message) => {
+        if (debugNode) {
+            debugNode.innerHTML += message + "\n\n";
+        }
+    };
+
     // https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat
     document.addEventListener("DOMContentLoaded", () => {
+        debugNode = document.querySelector('.js-debug-console');
         let node = document.querySelector(".credit-calc");
 
         let options = {
@@ -20,8 +29,11 @@ try {
             // formatMoney: (number) => number + ' руб'
             // formatMoney: (number) => new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' }).format(number)
         };
+        debugLog("creating calculator with options: " + JSON.stringify(options));
         let myCalc = new CreditCalc(node, options);
+        debugLog("created CreditCalc instance. Creating calc nodes");
         myCalc.makeNodes();
+        debugLog("Calc nodes created");
     });
 } catch (e) {
     alert("Caught error: " + e);

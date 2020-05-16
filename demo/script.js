@@ -237,8 +237,6 @@ try {
             // formatMoney: (number) => number + ' руб'
             // formatMoney: (number) => new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' }).format(number)
         };
-        debugLog("typeof DebugClass = " + (typeof DebugClass));
-        debugLog("debug instance: " + (new DebugClass));
         debugLog("creating calculator with options: " + JSON.stringify(options));
         debugLog("typeof CreditCalc = " + (typeof CreditCalc));
         let myCalc = new CreditCalc(node, options);

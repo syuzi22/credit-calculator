@@ -1,4 +1,7 @@
+alert('CreditCalc-1')
+
 class CreditCalc {
+    
     /**
      * @type {Node}
      */
@@ -36,7 +39,7 @@ class CreditCalc {
      * @throws Error
      */
     constructor(node, options) {
-    
+        alert('CreditCalc-2')
         this.node = node || options.node;
         this.rate = parseInt(options.rate || 14);
         this.years = options.years || ["1 год", "2 года", "3 года"];
@@ -44,6 +47,7 @@ class CreditCalc {
     }
 
     makeButtons() {
+        alert('CreditCalc-3')
         this.timeDiv.innerHTML = "";
         for (let i = 0; i < this.years.length; i++) {
             let button = document.createElement("button");
@@ -57,6 +61,7 @@ class CreditCalc {
     }
 
     calcAnnuityPayment(creditSum, creditTimeInMonths, creditRate) {
+        alert('CreditCalc-4')
         let monthCreditRate = creditRate / 12 / 100; //Месячная процентная ставка
         let numberOfPayments = creditTimeInMonths; //Количество платежей
         let pow = Math.pow(1 + monthCreditRate, numberOfPayments); //параметр для формулы расчета аннуитета
@@ -66,6 +71,7 @@ class CreditCalc {
     }
 
     rangeDivInputHandler() {
+        alert('CreditCalc-5')
         if (!this.valueOfRange) {
             return;
         }
@@ -88,6 +94,7 @@ class CreditCalc {
     }
 
     nodeClickHandler(event) {
+        alert('CreditCalc-6')
         if (!event.target.classList.contains("credit-calc__button")) {
             return;
         }
@@ -110,6 +117,7 @@ class CreditCalc {
     }
 
     formatMoneyFunc(value) {
+        alert('CreditCalc-7')
         if (typeof this.formatMoney === "function") {
             return this.formatMoney(
                 value
@@ -123,6 +131,8 @@ class CreditCalc {
     }
 
     makeNodes(){
+        alert('CreditCalc-8')
+
         this.rateDiv = this.node.querySelector(".credit-calc__rate");
         this.paymentDiv = this.node.querySelector(".credit-calc__payment");
         this.rangeDiv = this.node.querySelector(".credit-calc__range");

@@ -12,7 +12,17 @@ let options = {
     // formatMoney: (number) => new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' }).format(number)
 };
 
+try {
+
 let myCalc = new CreditCalc(node, options);
 myCalc.makeNodes();
 
+}catch(error) {
+    alert(error);
+}
+
+
+
 // https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat
+
+

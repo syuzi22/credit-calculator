@@ -1,5 +1,7 @@
 "use strict";
 
+class DebugClass {}
+
 window.onerror = function (msg, url, lineNo, columnNo, error) {
     alert("Fatal error: " + msg + " at line " + lineNo + ": " + error);
 
@@ -29,7 +31,10 @@ try {
             // formatMoney: (number) => number + ' руб'
             // formatMoney: (number) => new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' }).format(number)
         };
+        debugLog("typeof DebugClass = " + (typeof DebugClass));
+        debugLog("debug instance: " + (new DebugClass));
         debugLog("creating calculator with options: " + JSON.stringify(options));
+        debugLog("typeof CreditCalc = " + (typeof CreditCalc));
         let myCalc = new CreditCalc(node, options);
         debugLog("created CreditCalc instance. Creating calc nodes");
         myCalc.makeNodes();

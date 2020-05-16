@@ -41,6 +41,7 @@ class CreditCalc {
         this.rate = parseInt(options.rate || 14);
         this.years = options.years || ["1 год", "2 года", "3 года"];
         this.formatMoney = options.formatMoney;
+        this.options = options;
     }
 
     makeButtons() {
@@ -138,9 +139,9 @@ class CreditCalc {
             this.node.insertAdjacentElement("afterbegin", this.rangeDiv);
         }
 
-        this.rangeDiv.min = options.rangeMin || this.rangeDiv.min || 1e5;
-        this.rangeDiv.max = options.rangeMax || this.rangeDiv.max || 1e6;
-        this.rangeDiv.step = options.rangeStep || this.rangeDiv.step || 1e5;
+        this.rangeDiv.min = this.options.rangeMin || this.rangeDiv.min || 1e5;
+        this.rangeDiv.max = this.options.rangeMax || this.rangeDiv.max || 1e6;
+        this.rangeDiv.step = this.options.rangeStep || this.rangeDiv.step || 1e5;
         this.rangeDiv.classList.add("credit-calc__range");
         if (this.rateDiv) {
             this.rateDiv.textContent = this.rate + " %";

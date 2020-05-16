@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../base.css">
+    <link rel="stylesheet" href="color.css">
+    <link rel="stylesheet" href="range.css">
+    <link rel="stylesheet" href="button.css">
+    <title>Кредитный калькулятор</title>
+</head>
+
+<body>
+
+    <h1>Рассчитайте свой кредит</h1>
+
+    <div class="credit-calc">
+
+        <div class="credit-calc-wrap">
+
+            <div class="credit-calc-left">
+                <input class="credit-calc__range" type="range" max="1000000" step="100000" value="100000">
+                <div class="credit-calc__value-of-range"></div><span></span>
+                <div class="credit-calc__time"></div>
+            </div>
+
+            <div class="credit-calc-right">
+                <div class="credit-calc__offerwrap"> 
+                    <span class="credit-calc__offer">Наше предложение: 
+                        <span class="credit-calc__rate"></span>
+                    </span>
+                </div>
+                <div class="credit-calc__paymentwrap">
+                    <span class="credit-calc__payment"></span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="../calc.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

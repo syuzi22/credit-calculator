@@ -1,0 +1,28 @@
+.credit-calc__button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 0;
+    border-radius: 3em;
+    background-color: #FFBC00;
+    color: #A62A00;
+    font-size: 1em;
+    padding: 0.5em 1em;
+    cursor: pointer;
+}
+
+.credit-calc__button:hover {
+    background-color: #FF9773;
+    color: white;
+  }
+  
+  .credit-calc__button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #B2A376
+  }
+
+  .credit-calc__button_selected {
+    background-color: #FF7140;
+    color: whitesmoke;
+    font-weight: 900;
+}

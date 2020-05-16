@@ -1,0 +1,78 @@
+.credit-calc-wrap {
+    display: flex;
+    flex-wrap: wrap; 
+    margin: 0 auto;
+    width: auto;
+    max-width: 1080px;
+}
+
+
+.credit-calc-left {
+    flex: 1 1 300px;
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 20px;
+    margin: 10px;
+    min-width: 300px;
+}
+
+.credit-calc__range {
+    flex: 1 1 40px;
+}
+
+.credit-calc__value-of-range {
+    flex: 1 1 40px;
+    padding: 5px;
+    font-size: 1.3em;
+}
+
+.credit-calc__time {
+    flex: 1 1 40px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.credit-calc__button {
+    flex: 1;
+    margin: 5px;
+    white-space: nowrap;
+}
+
+.credit-calc__button:hover {
+    background-color: #C0BEA3;
+}
+
+.credit-calc__button_selected {
+    background-color: #908F80;
+    color: whitesmoke;
+}
+
+
+.credit-calc-right {
+    flex: 1 1 300px;
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 20px;
+    margin: 10px;
+    min-width: 300px;
+}
+
+.credit-calc__offerwrap {
+    flex: 1 1 40px;
+    display: flex;
+    font-size: 1.4em; 
+}
+
+.credit-calc__offer {
+    margin: auto 0;
+}
+
+.credit-calc__paymentwrap{
+    flex: 1 1 40px;
+    display: flex;
+    font-size: 1.6em;
+}
+
+.credit-calc__payment {
+    margin: auto 0;
+}

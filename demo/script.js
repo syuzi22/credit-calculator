@@ -1,6 +1,18 @@
 "use strict";
 
 try {
+
+    alert(navigator.userAgent)
+
+    class Test {
+        constructor(){
+            this.name = 'Susanna';
+        }
+    }
+
+    let testUser = new Test();
+    alert(testUser.name)
+
     let node = document.querySelector(".credit-calc");
 
     let options = {

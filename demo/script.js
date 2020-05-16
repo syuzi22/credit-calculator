@@ -13,7 +13,11 @@
     };
 
     function runCalc() {
+        try{
         let myCalc = new CreditCalc(node, options);
+        }catch(e){
+            alert(e);
+        }
         myCalc.makeNodes();
     }
 

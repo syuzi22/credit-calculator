@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -8,37 +8,24 @@
     <link rel="stylesheet" href="color.css">
     <link rel="stylesheet" href="range.css">
     <link rel="stylesheet" href="button.css">
-    <style>
-    .js-debug-console {
-        font-family: monospace;
-        width: 100%;
-        height: 500px;
-        padding: 4px;
-        border: 1px solid #000;
-        border-radius: 4px;
-        background: #e0e0e0;
-    }
-    </style>
-    <title>Кредитный калькулятор</title>
+
+    <title>Credit Calculator Demo</title>
 </head>
-
 <body>
-
-    <h1>Рассчитайте свой кредит</h1>
-
+    <h1>Calculate your credit</h1>
     <div class="credit-calc">
 
         <div class="credit-calc-wrap">
 
             <div class="credit-calc-left">
-                <input class="credit-calc__range" type="range" max="1000000" step="100000" value="100000">
+                <input class="credit-calc__range" type="range" min="100000" max="1000000" step="100000" value="100000">
                 <div class="credit-calc__value-of-range"></div><span></span>
                 <div class="credit-calc__time"></div>
             </div>
 
             <div class="credit-calc-right">
                 <div class="credit-calc__offerwrap"> 
-                    <span class="credit-calc__offer">Наше предложение: 
+                    <span class="credit-calc__offer">Our offer: 
                         <span class="credit-calc__rate"></span>
                     </span>
                 </div>
@@ -51,8 +38,7 @@
 
     </div>
 
-    <pre class="js-debug-console"></pre>
-    <!--<script src="calc.js"></script>-->
+    <script src="../calc.js"></script>
     <script src="script.js"></script>
 </body>
 

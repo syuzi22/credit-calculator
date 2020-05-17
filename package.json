@@ -1,0 +1,22 @@
+{
+  "name": "credit-calculator",
+  "version": "1.0.0",
+  "description": "Credit calculator component written in native JavaScript",
+  "main": "calc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/syuzi22/credit-calculator.git"
+  },
+  "author": "Susanna",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/syuzi22/credit-calculator/issues"
+  },
+  "homepage": "https://github.com/syuzi22/credit-calculator#readme",
+  "devDependencies": {
+    "http-server": "^0.12.3"
+  }
+}

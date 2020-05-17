@@ -27,13 +27,14 @@
 }
 
 .credit-calc__time {
-    flex: 1 1 40px;
+    flex: 1 1 auto;
     display: flex;
     flex-wrap: wrap;
 }
 
 .credit-calc__button {
-    flex: 1;
+    flex: 1 1 45px;
+    display: inline-block;
     margin: 5px;
     white-space: nowrap;
 }
